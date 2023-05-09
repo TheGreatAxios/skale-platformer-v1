@@ -1,6 +1,6 @@
 import * as me from 'melonjs';
 import game from './../game.js';
-
+import web3modal from '../wallet';
 /**
  * a basic control to toggle fullscreen on/off
  */
@@ -90,6 +90,42 @@ class AudioControl extends me.GUI_Object {
     }
 };
 
+class Web3Control extends me.GUI_Object {
+    /**
+     * constructor
+     */
+    constructor(x, y) {
+        super(x, y, {
+            image: game.texture,
+            region : "shadedDark13.png" // ON by default
+        });
+        this.setOpacity(0.5);
+    }
+
+    /**
+     * function called when the pointer is over the object
+     */
+    onOver(/* event */) {
+        this.setOpacity(1.0);
+    }
+
+    /**
+     * function called when the pointer is leaving the object area
+     */
+    onOut(/* event */) {
+        this.setOpacity(0.5);
+    }
+
+    /**
+     * function called when the object is clicked on
+     */
+    onClick(/* event */) {
+        console.log(web3modal)
+        web3modal.openModal();
+        return false;
+    }
+};
+
 /**
  * a basic HUD item to display score
  */
@@ -160,6 +196,8 @@ class UIContainer extends me.Container {
 
         // add our audio control object
         this.addChild(new AudioControl(36, 56));
+
+        this.addChild(new Web3Control(150, 56));
 
         if (!me.device.isMobile) {
             // add our fullscreen control object

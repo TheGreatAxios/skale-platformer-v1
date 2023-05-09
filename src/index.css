@@ -1,4 +1,19 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@100;200&display=swap');
+
+h1, h2, h3 {
+    font-family: 'Lato', sans-serif;
+}
+
+h4, h5, h6, p, span, button, label, input {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+html, body {
+
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 
     background-color: black;
     color: white;
@@ -16,10 +31,40 @@ body {
 
     /* Allow canvas to hit the edges of the browser viewport. */
     margin: 0;
+
+    position: relative;
+}
+
+#introduction {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 30%;
+    z-index: 100000;
+}
+
+footer {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p {
+    text-align: center;
+    width: 100%;
+    color: beige;
+    font-size: 0.75rem;
+}
+
+#screen {
+    height: calc(100vh - 150px);
 }
 
 #screen canvas {
     margin: auto;
-    /* Hide the gap for font descenders. */
-    display: block;
+    height: 100%;
+    width: 100%;
 }
