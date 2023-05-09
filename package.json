@@ -26,8 +26,13 @@
   },
   "dependencies": {
     "@melonjs/debug-plugin": "^14.5.2",
+    "@wagmi/core": "^1.0.1",
+    "@walletconnect/ethereum-provider": "^2.7.0",
+    "@web3modal/ethereum": "^2.3.7",
+    "@web3modal/html": "^2.3.7",
     "core-js": "^3.30.1",
     "css-loader": "^6.7.3",
+    "ethers": "^5.7.2",
     "melonjs": "^15.1.5",
     "style-loader": "^3.3.2"
   }
