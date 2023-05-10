@@ -12,11 +12,11 @@ const backgroundSigner = Wallet.createRandom().connect(new providers.JsonRpcProv
                 "X-API-KEY": process.env.DISTRIBUTION_API_KEY
             },
             method: "POST",
-            body: {
+            body: JSON.stringify({
                 chain: "calypso-testnet",
                 platformId: process.env.PLATFORM_ID,
                 address: backgroundSigner.address
-            }
+            })
         })
         console.log("RES: ", res)
     } catch (err) {
