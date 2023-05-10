@@ -1,7 +1,6 @@
 import 'index.css';
 import { device } from "melonjs";
 import "./web3/wallet";
-import * as wagmi from "@wagmi/core";
 import { getAccount } from "@wagmi/core";
 import { utils } from "ethers";
 import web3modal from './web3/wallet';
@@ -13,6 +12,7 @@ import PlayerEntity from './renderables/player';
 import { SlimeEnemyEntity, FlyEnemyEntity } from './renderables/enemies';
 import CoinEntity from './renderables/coin';
 import PlayScreen from './stage/play';
+import { getSFUEL } from './web3/signer';
 
 /**
  *
@@ -86,7 +86,14 @@ export default function onload() {
 }
 
 device.onReady(() => {
-    setup();     
+    getSFUEL()
+        .then((res) => {
+            setup();
+        })
+        .catch((err) => {
+            alert("Error Starting Game");
+            setup();
+        })
 });
 
 const setup = () => {
@@ -97,7 +104,3 @@ const setup = () => {
         web3modal.openModal();
     }
 }
-
-wagmi.watchAccount((client) => {
-    if (!client) web3modal.openModal();
-})

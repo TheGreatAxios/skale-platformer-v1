@@ -1,8 +1,6 @@
 import * as me from 'melonjs';
 import game from './../game.js';
-import { gold } from '../web3/contracts';
-import { constants } from "ethers";
-import { getAccount } from "@wagmi/core";
+import { collectGold } from '../web3/contracts';
 
 class CoinEntity extends me.Collectable {
     /**
@@ -21,7 +19,7 @@ class CoinEntity extends me.Collectable {
 
     // add a onResetEvent to enable object recycling
     onResetEvent(x, y, settings) {
-        this.shift(x, y);
+        this.shift(x + 2.5, y + 2.5);
         // only check for collision against player
         this.body.setCollisionMask(me.collision.types.PLAYER_OBJECT);
     }
@@ -41,14 +39,9 @@ class CoinEntity extends me.Collectable {
 
         me.game.world.removeChild(this);
 
-        this.handleMint();
+        collectGold();
 
         return false;
-    }
-
-    async handleMint() {
-        const { address } = getAccount();
-        await gold.publicMint(address ?? constants.AddressZero);
     }
 };
 
