@@ -1,6 +1,6 @@
 import * as me from 'melonjs';
 import game from './../game.js';
-import web3modal from '../wallet';
+import web3modal from '../web3/wallet';
 /**
  * a basic control to toggle fullscreen on/off
  */

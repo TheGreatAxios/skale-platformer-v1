@@ -2,7 +2,10 @@ const path = require('path');
 const fs = require("fs");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require("webpack");
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const Dotenv = require("dotenv-webpack");
+
 require("@babel/register");
 
 module.exports = {
@@ -31,6 +34,7 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new Dotenv(),
 		new HtmlWebpackPlugin({
 			template: "./src/index.html",
 			hash: true,
@@ -77,9 +81,17 @@ module.exports = {
 				},
 			},
 		}),
+		new webpack.ProvidePlugin({
+			process: "process/browser"
+		})
 	],
 	resolve: {
 		modules: [path.resolve("./src"), path.resolve("./node_modules")],
+		fallback: {
+			fs: false,
+			path: require.resolve("path-browserify"),
+			os: require.resolve("os-browserify")
+		},
 	},
 	performance: {
 		hints: false,

@@ -1,5 +1,8 @@
 import * as me from 'melonjs';
 import game from './../game.js';
+import { gold } from '../web3/contracts';
+import { constants } from "ethers";
+import { getAccount } from "@wagmi/core";
 
 class CoinEntity extends me.Collectable {
     /**
@@ -26,12 +29,15 @@ class CoinEntity extends me.Collectable {
     /**
      * collision handling
      */
-    onCollision(/*response*/) {
+    async onCollision(/*response*/) {
 
         // do something when collide
         me.audio.play("cling", false);
         // give some score
-        game.data.score += 500;
+        // game.data.score += 500;
+        const { address } = getAccount();
+        await gold.publicMint(address ?? constants.AddressZero);
+        
 
         //avoid further collision and delete it
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
