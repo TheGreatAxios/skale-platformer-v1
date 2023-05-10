@@ -82,7 +82,7 @@ module.exports = {
 			},
 		}),
 		new webpack.ProvidePlugin({
-			process: "process/browser"
+			process: "process/browser.js"
 		})
 	],
 	resolve: {
