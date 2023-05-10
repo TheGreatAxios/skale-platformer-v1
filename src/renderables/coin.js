@@ -29,22 +29,26 @@ class CoinEntity extends me.Collectable {
     /**
      * collision handling
      */
-    async onCollision(/*response*/) {
+    onCollision(/*response*/) {
 
         // do something when collide
         me.audio.play("cling", false);
         // give some score
         // game.data.score += 500;
-        const { address } = getAccount();
-        await gold.publicMint(address ?? constants.AddressZero);
-        
 
         //avoid further collision and delete it
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
 
         me.game.world.removeChild(this);
 
+        this.handleMint();
+
         return false;
+    }
+
+    async handleMint() {
+        const { address } = getAccount();
+        await gold.publicMint(address ?? constants.AddressZero);
     }
 };
 
