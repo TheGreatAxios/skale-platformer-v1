@@ -1,11 +1,15 @@
 import * as me from 'melonjs';
 import game from './../game.js';
+import { destroyEnemy } from '../web3/contracts';
 
 /**
  * An enemy entity
  * follow a horizontal path defined by the box size in Tiled
  */
 class PathEnemyEntity extends me.Entity {
+
+    tokenId = 0;
+
     /**
      * constructor
      */
@@ -89,6 +93,7 @@ class PathEnemyEntity extends me.Entity {
      * collision handle
      */
     onCollision(response) {
+        console.log("Collision 1");
         // res.y >0 means touched by something on the bottom
         // which mean at top position for this one
         if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {
@@ -119,8 +124,12 @@ class PathEnemyEntity extends me.Entity {
             // dead sfx
             me.audio.play("enemykill", false);
             // give some score
-            game.data.score += 150;
+            // game.data.score += 150;
+
+            destroyEnemy(this.tokenId);
+
         }
+
         return false;
     }
 
@@ -137,6 +146,8 @@ export class SlimeEnemyEntity extends PathEnemyEntity {
     constructor(x, y, settings) {
         // super constructor
         super(x, y, settings);
+
+        this.tokenId = 2;
 
         // set a renderable
         this.renderable = game.texture.createAnimationFromName([
@@ -176,6 +187,8 @@ export class FlyEnemyEntity extends PathEnemyEntity {
     constructor(x, y, settings) {
         // super constructor
         super(x, y, settings);
+
+        this.tokenId = 1;
 
         // set a renderable
         this.renderable = game.texture.createAnimationFromName([

@@ -11,6 +11,18 @@ import { config as dotenvConfig } from "dotenv";
 
 dotenvConfig();
 
+task("update-uri", "Update URI on ERC-1155")
+  .addParam("name", "Contract Name")
+  .addParam("uri", "New URI")
+  .setAction(async(taskArgs, hre) => {
+    const config = await hre.deployments.get(taskArgs.name);
+    const [ signer ] = await hre.ethers.getSigners();
+    const contract = new hre.ethers.Contract(config.address, config.abi, signer);
+
+    await contract.setURI(taskArgs.uri);
+  })
+
+
 const config: HardhatUserConfig = {
   solidity: "0.8.9",
   namedAccounts: {
