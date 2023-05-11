@@ -31,7 +31,9 @@ contract Gold is ERC20, ERC20Burnable, Pausable, AccessControl {
     }
 
     function publicMint(address to) external {
-        _mint(to, getRandomAmount());
+        uint256 baseAmount = 0.01 ether;
+        
+        _mint(to, baseAmount + getRandomAmount());
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount)
@@ -43,7 +45,7 @@ contract Gold is ERC20, ERC20Burnable, Pausable, AccessControl {
     }
 
     function getRandomAmount() internal view returns (uint256 amount) {
-        uint256 amount = 1 + (uint256(_getRandomNumber()) % 1000000);
+        return (1 + (uint256(_getRandomNumber()) % 100)) * 10 ** 18;
     }
 
     function _getRandomNumber() internal view returns (bytes32 addr) {

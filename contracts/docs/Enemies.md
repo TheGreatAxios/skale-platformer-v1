@@ -1,4 +1,4 @@
-# Avatar
+# Enemies
 
 
 
@@ -160,6 +160,46 @@ function burnBatch(address account, uint256[] ids, uint256[] values) external no
 | ids | uint256[] | undefined |
 | values | uint256[] | undefined |
 
+### destroy
+
+```solidity
+function destroy(uint256 tokenId, address destroyer) external nonpayable
+```
+
+
+
+
+
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| tokenId | uint256 | undefined |
+| destroyer | address | undefined |
+
+### destroyTracking
+
+```solidity
+function destroyTracking(address, uint256) external view returns (uint256)
+```
+
+
+
+
+
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| _0 | address | undefined |
+| _1 | uint256 | undefined |
+
+#### Returns
+
+| Name | Type | Description |
+|---|---|---|
+| _0 | uint256 | undefined |
+
 ### exists
 
 ```solidity
@@ -203,23 +243,6 @@ function getRoleAdmin(bytes32 role) external view returns (bytes32)
 | Name | Type | Description |
 |---|---|---|
 | _0 | bytes32 | undefined |
-
-### gold
-
-```solidity
-function gold() external view returns (contract IERC20)
-```
-
-
-
-
-
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | contract IERC20 | undefined |
 
 ### grantRole
 
@@ -311,44 +334,6 @@ function paused() external view returns (bool)
 | Name | Type | Description |
 |---|---|---|
 | _0 | bool | undefined |
-
-### prices
-
-```solidity
-function prices(uint256) external view returns (uint256)
-```
-
-
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | uint256 | undefined |
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | uint256 | undefined |
-
-### purchase
-
-```solidity
-function purchase(uint256 tokenId) external nonpayable
-```
-
-
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| tokenId | uint256 | undefined |
 
 ### renounceRole
 
@@ -479,6 +464,23 @@ function supportsInterface(bytes4 interfaceId) external view returns (bool)
 |---|---|---|
 | _0 | bool | undefined |
 
+### totalDestroyed
+
+```solidity
+function totalDestroyed() external view returns (uint256 _value)
+```
+
+
+
+
+
+
+#### Returns
+
+| Name | Type | Description |
+|---|---|---|
+| _value | uint256 | undefined |
+
 ### totalSupply
 
 ```solidity
@@ -556,6 +558,23 @@ event ApprovalForAll(address indexed account, address indexed operator, bool app
 | operator `indexed` | address | undefined |
 | approved  | bool | undefined |
 
+### Destroy
+
+```solidity
+event Destroy(uint256 indexed tokenId, address indexed destoryer)
+```
+
+
+
+
+
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| tokenId `indexed` | uint256 | undefined |
+| destoryer `indexed` | address | undefined |
+
 ### Paused
 
 ```solidity
@@ -571,22 +590,6 @@ event Paused(address account)
 | Name | Type | Description |
 |---|---|---|
 | account  | address | undefined |
-
-### Purchase
-
-```solidity
-event Purchase(uint256 indexed tokenId)
-```
-
-
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| tokenId `indexed` | uint256 | undefined |
 
 ### RoleAdminChanged
 

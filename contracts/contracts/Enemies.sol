@@ -1,36 +1,33 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
+import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 /// @custom:security-contact code@dirtroad.dev
-contract Avatar is ERC1155, AccessControl, Pausable, ERC1155Burnable, ERC1155Supply, ReentrancyGuard {
+contract Enemies is ERC1155, AccessControl, Pausable, ERC1155Burnable, ERC1155Supply {
 
-    using SafeERC20 for IERC20;
+    using Counters for Counters.Counter;
 
     bytes32 public constant URI_SETTER_ROLE = keccak256("URI_SETTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
+    
+    Counters.Counter public totalDestroyed;
 
-    IERC20 public gold;
+    mapping(address => mapping(uint256 => uint256)) public destroyTracking;
 
-    mapping(uint256 => uint256) public prices;
+    event Destroy(uint256 indexed tokenId, address indexed destoryer);
 
-    event Purchase(uint256 indexed tokenId);
-
-    constructor(IERC20 _gold) ERC1155("ipfs://") {
+    constructor() ERC1155("ipfs://") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(URI_SETTER_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
-        gold = _gold;
     }
 
     function setURI(string memory newuri) public onlyRole(URI_SETTER_ROLE) {
@@ -45,14 +42,12 @@ contract Avatar is ERC1155, AccessControl, Pausable, ERC1155Burnable, ERC1155Sup
         _unpause();
     }
 
-    function purchase(uint256 tokenId) external nonReentrant() {
-        require(prices[tokenId] != 0, "Token cannot be purchased");
+    function destroy(uint256 tokenId, address destroyer) external {
+        _mint(destroyer, tokenId, 1, "");
+        totalDestroyed.increment();
+        destroyTracking[destroyer][tokenId] += 1;
 
-        gold.safeTransferFrom(msg.sender, address(this), prices[tokenId]);
-
-        _mint(msg.sender, tokenId, 1, "");
-
-        emit Purchase(tokenId);
+        emit Destroy(tokenId, destroyer);
     }
 
     function _beforeTokenTransfer(address operator, address from, address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data)

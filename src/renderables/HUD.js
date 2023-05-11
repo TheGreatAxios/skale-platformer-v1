@@ -161,9 +161,9 @@ class ScoreItem extends me.BitmapText {
      * update function
      */
     update( dt ) {
-        if (this.score !== game.data.score) {
-            this.score = game.data.score;
-            this.setText(this.score);
+        if (this.score !== game.data.gold.balance) {
+            this.score = game.data.gold.balance;
+            this.setText("Gold " + this.score);
             this.isDirty = true;
         }
         return super.update(dt);

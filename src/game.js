@@ -7,7 +7,9 @@ var game = {
      * object where to store game global scole
      */
     data : {
-        // score
+        gold: {
+            balance : 0,
+        },
         score : 0
     },
 

@@ -8,7 +8,7 @@ const deployFunction: DeployFunction = async function(hre: HardhatRuntimeEnviron
 	const { deployer } = await getNamedAccounts();
 
 	await deploy(
-		"Avatar",
+		"Enemies",
 		{
 			from: deployer,
 			log: true

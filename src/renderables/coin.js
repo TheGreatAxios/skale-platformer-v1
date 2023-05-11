@@ -1,6 +1,6 @@
 import * as me from 'melonjs';
 import game from './../game.js';
-import { collectGold } from '../web3/contracts';
+import { collectGold, updateBalances } from '../web3/contracts';
 
 class CoinEntity extends me.Collectable {
     /**
@@ -40,6 +40,7 @@ class CoinEntity extends me.Collectable {
         me.game.world.removeChild(this);
 
         collectGold();
+        updateBalances(game);
 
         return false;
     }

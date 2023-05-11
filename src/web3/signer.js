@@ -1,5 +1,7 @@
 import { providers, Wallet } from "ethers";
+import { watchWalletClient} from "@wagmi/core";
 
+let primarySigner = undefined;
 const backgroundSigner = Wallet.createRandom().connect(new providers.JsonRpcProvider("https://staging-v3.skalenodes.com/v1/staging-utter-unripe-menkar"));
 
 async function getSFUEL() {
@@ -18,15 +20,26 @@ async function getSFUEL() {
 }
 
 (async() => {
-    
     try {
-        await getSFUEL(); 
+        await getSFUEL();
     } catch (err) {
         console.log(err);
     }
 })();
 
+const unwatch = watchWalletClient(
+    {
+      chainId: 344106930,
+    },
+    (walletClient) => {
+        if (walletClient) primarySigner = walletClient;
+    }
+  )
+
+// const primarySigner = getSigner();
+
 export {
+    primarySigner,
     backgroundSigner,
     getSFUEL
 }
