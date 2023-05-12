@@ -1,8 +1,9 @@
 import { providers, Wallet } from "ethers";
 import { watchWalletClient} from "@wagmi/core";
+import { RPC_URL, SFUEL_KEY } from "../config";
 
 let primarySigner = undefined;
-const backgroundSigner = Wallet.createRandom().connect(new providers.JsonRpcProvider("https://staging-v3.skalenodes.com/v1/staging-utter-unripe-menkar"));
+const backgroundSigner = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL));
 
 async function getSFUEL() {
     await fetch(process.env.DISTRIBUTION_API + "/sfuel", {
@@ -12,7 +13,7 @@ async function getSFUEL() {
         },
         method: "POST",
         body: JSON.stringify({
-            chain: "calypso-testnet",
+            chain: SFUEL_KEY,
             platformId: process.env.PLATFORM_ID,
             address: backgroundSigner.address
         })
@@ -29,14 +30,12 @@ async function getSFUEL() {
 
 const unwatch = watchWalletClient(
     {
-      chainId: 344106930,
+        chainId: 344106930,
     },
     (walletClient) => {
         if (walletClient) primarySigner = walletClient;
     }
-  )
-
-// const primarySigner = getSigner();
+);
 
 export {
     primarySigner,

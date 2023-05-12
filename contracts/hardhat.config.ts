@@ -36,12 +36,17 @@ const config: HardhatUserConfig = {
     calypso: {
       url: "https://mainnet.skalenodes.com/v1/honorable-steel-rasalhague",
       accounts: [(process.env.PRIVATE_KEY as string)]
+    },
+    nebula: {
+      url: "https://mainnet.skalenodes.com/v1/green-giddy-denebola",
+      accounts: [(process.env.PRIVATE_KEY as string)]
     }
   },
   etherscan: {
     apiKey: {
       "calypso-staging-v3": "does-not-matter",
-      "calypso": "does-not-matter"
+      "calypso": "does-not-matter",
+      "nebula": "does-not-matter"
     },
     customChains: [
       {
@@ -58,6 +63,14 @@ const config: HardhatUserConfig = {
         urls: {
             apiURL: "https://honorable-steel-rasalhague.explorer.mainnet.skalenodes.com/api",
             browserURL: "https://honorable-steel-rasalhague.explorer.mainnet.skalenodes.com"
+        }
+      },
+      {
+        network: "nebula",
+        chainId: 1482601649,
+        urls: {
+            apiURL: "https://green-giddy-denebola.explorer.mainnet.skalenodes.com/api",
+            browserURL: "https://green-giddy-denebola.explorer.mainnet.skalenodes.com"
         }
       }
     ]

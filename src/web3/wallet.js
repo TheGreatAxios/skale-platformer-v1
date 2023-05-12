@@ -4,7 +4,7 @@ import { configureChains, createConfig } from '@wagmi/core'
 import { skaleCalypsoTestnet } from '@wagmi/core/chains'
 
 const chains = [skaleCalypsoTestnet]
-const projectId = process.env.WALLET_CONNECT_PROJECT_ID;
+const projectId = process.env.WALLET_CONNECT_PLATFORM_ID;
 
 const { provider } = configureChains(chains, [w3mProvider({ projectId })]);
 

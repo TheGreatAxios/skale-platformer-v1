@@ -88,11 +88,11 @@ export default function onload() {
 device.onReady(() => {
     getSFUEL()
         .then((res) => {
-            // setup();
+            setup();
         })
         .catch((err) => {
             alert("Error Starting Game");
-            // setup();
+            setup();
         })
 });
 
@@ -101,6 +101,6 @@ const setup = () => {
         document.getElementById("introduction").style.display = "none";
         onload();
     } else {
-        web3modal.openModal();
+        // web3modal.openModal();
     }
 }

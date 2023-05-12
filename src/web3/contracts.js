@@ -1,24 +1,25 @@
 /** Testnet **/
 
 // import AvatarsConfiguration from "../../contracts/deployments/calypso-staging-v3/Avatars.json";
-import EnemiesConfiguration from "../../contracts/deployments/calypso-staging-v3/Enemies.json";
-import GoldConfiguration from "../../contracts/deployments/calypso-staging-v3/Gold.json";
-import MulticallConfiguration from "../../contracts/deployments/calypso-staging-v3/Multicall3.json";
+// import EnemiesConfiguration from "../../contracts/deployments/calypso-staging-v3/Enemies.json";
+// import GoldConfiguration from "../../contracts/deployments/calypso-staging-v3/Gold.json";
+// import MulticallConfiguration from "../../contracts/deployments/calypso-staging-v3/Multicall3.json";
 /** Mainnet **/
-// import AvatarsConfiguration from "../../contracts/deployments/nebula-mainnet/Avatars.json";
-// import EnemiesConfiguration from "../../contracts/deployments/nebula-mainnet/Enemies.json";
-// import GoldConfiguration from "../../contracts/deployments/nebula-mainnet/Gold.json";
+// import AvatarsConfiguration from "../../contracts/deployments/nebula/Avatars.json";
+import EnemiesConfiguration from "../../contracts/deployments/nebula/Enemies.json";
+import GoldConfiguration from "../../contracts/deployments/nebula/Gold.json";
 // import MulticallConfiguration from "../../contracts/deployments/nebula-mainnet/Multicall3.json";
 
-import { backgroundSigner, primarySigner } from "./signer";
+import { backgroundSigner } from "./signer";
 import { Contract } from "ethers";
 import { getAccount } from "@wagmi/core";
 import { providers, utils, BigNumber } from "ethers";
+import { RPC_URL } from "../config";
 import game from "../game";
 
 let nonce = 0;
 
-const provider = new providers.JsonRpcProvider("https://staging-v3.skalenodes.com/v1/staging-utter-unripe-menkar");
+const provider = new providers.JsonRpcProvider(RPC_URL);
 
 (async() => {
     nonce = await provider.getTransactionCount(backgroundSigner.address);
@@ -32,7 +33,6 @@ const provider = new providers.JsonRpcProvider("https://staging-v3.skalenodes.co
 })();
 
 const gold = new Contract(GoldConfiguration.address, GoldConfiguration.abi, backgroundSigner);
-// const avatars = new Contract(AvatarsConfiguration.address, AvatarsConfiguration.abi, backgroundSigner);
 const enemies = new Contract(EnemiesConfiguration.address, EnemiesConfiguration.abi, backgroundSigner);
 
 async function collectGold() {
@@ -47,8 +47,6 @@ async function collectGold() {
 }
 
 async function destroyEnemy(tokenId) {
-
-    console.log("Destroy");
 
     const { address } = getAccount();
     const _nonce = nonce;
