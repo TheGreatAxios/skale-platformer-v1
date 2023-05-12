@@ -1,13 +1,13 @@
 /** Testnet **/
 
 // import AvatarsConfiguration from "../../contracts/deployments/calypso-staging-v3/Avatars.json";
-// import EnemiesConfiguration from "../../contracts/deployments/calypso-staging-v3/Enemies.json";
-// import GoldConfiguration from "../../contracts/deployments/calypso-staging-v3/Gold.json";
+import EnemiesConfiguration from "../../contracts/deployments/calypso-staging-v3/Enemies.json";
+import GoldConfiguration from "../../contracts/deployments/calypso-staging-v3/Gold.json";
 // import MulticallConfiguration from "../../contracts/deployments/calypso-staging-v3/Multicall3.json";
 /** Mainnet **/
 // import AvatarsConfiguration from "../../contracts/deployments/nebula/Avatars.json";
-import EnemiesConfiguration from "../../contracts/deployments/nebula/Enemies.json";
-import GoldConfiguration from "../../contracts/deployments/nebula/Gold.json";
+// import EnemiesConfiguration from "../../contracts/deployments/nebula/Enemies.json";
+// import GoldConfiguration from "../../contracts/deployments/nebula/Gold.json";
 // import MulticallConfiguration from "../../contracts/deployments/nebula-mainnet/Multicall3.json";
 
 import { backgroundSigner } from "./signer";
