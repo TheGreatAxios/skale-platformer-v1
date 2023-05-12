@@ -93,7 +93,6 @@ class PathEnemyEntity extends me.Entity {
      * collision handle
      */
     onCollision(response) {
-        console.log("Collision 1");
         // res.y >0 means touched by something on the bottom
         // which mean at top position for this one
         if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {

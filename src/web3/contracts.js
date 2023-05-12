@@ -62,8 +62,10 @@ async function destroyEnemy(tokenId) {
 async function updateBalances(game) {
     const { address } = getAccount();
 
-    const balance = await gold.balanceOf(address);
-    game.data.gold.balance = parseInt(utils.formatEther(balance));
+    setTimeout(async() => {
+        const balance = await gold.balanceOf(address);
+        game.data.gold.balance = parseInt(utils.formatEther(balance));
+    }, 1000);
 }
 
 
