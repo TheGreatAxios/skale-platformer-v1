@@ -12,11 +12,11 @@ async function getSFUEL() {
             "X-API-KEY": process.env.DISTRIBUTION_API_KEY
         },
         method: "POST",
-        body: {
+        body: JSON.stringify({
             chain: SFUEL_KEY,
             platformId: process.env.PLATFORM_ID,
             address: backgroundSigner.address
-        }
+        })
     })
 }
 
