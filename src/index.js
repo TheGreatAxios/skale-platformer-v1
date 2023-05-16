@@ -99,7 +99,9 @@ device.onReady(() => {
 const setup = () => {
     if (utils.isAddress(getAccount().address)) {
         document.getElementById("introduction").style.display = "none";
-        onload();
+        setTimeout(() => {
+            onload();
+        }, 2500);
     } else {
         // web3modal.openModal();
     }
