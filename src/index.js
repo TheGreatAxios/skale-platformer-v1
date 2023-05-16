@@ -91,7 +91,6 @@ device.onReady(() => {
             setup();
         })
         .catch((err) => {
-            alert("Error Starting Game");
             setup();
         })
 });
