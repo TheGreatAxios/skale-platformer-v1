@@ -80,8 +80,12 @@ export default function onload() {
             }
         });
 
+
+
         // switch to PLAY state
-        me.state.change(me.state.PLAY);
+        setTimeout(() => {
+            me.state.change(me.state.PLAY);
+        }, 2500)
     });
 }
 
@@ -99,10 +103,8 @@ device.onReady(() => {
 const setup = () => {
     if (utils.isAddress(getAccount().address)) {
         document.getElementById("introduction").style.display = "none";
-        setTimeout(() => {
-            onload();
-        }, 2500);
+        onload();
     } else {
-        // web3modal.openModal();
+        web3modal.openModal();
     }
 }
