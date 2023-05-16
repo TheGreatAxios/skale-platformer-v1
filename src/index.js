@@ -91,6 +91,7 @@ device.onReady(() => {
             setup();
         })
         .catch((err) => {
+            console.log("Error: ", err);
             setup();
         })
 });
