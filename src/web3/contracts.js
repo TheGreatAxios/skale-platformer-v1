@@ -41,7 +41,7 @@ async function collectGold() {
     const _nonce = nonce;
     nonce++;
 
-    await gold.publicMint(utils.isAddress(address) ? address : constants.AddressZero, {
+    gold.publicMint(utils.isAddress(address) ? address : constants.AddressZero, {
         nonce: _nonce
     });
 }
@@ -52,7 +52,7 @@ async function destroyEnemy(tokenId) {
     const _nonce = nonce;
     nonce++;
 
-    await enemies.destroy(BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero, {
+    enemies.destroy(BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero, {
         nonce: _nonce
     });
 
