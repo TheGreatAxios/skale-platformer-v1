@@ -8,7 +8,7 @@ const wallet = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_U
 const backgroundSigner = new NonceManager(wallet);
 
 async function getSFUEL() {
-    console.log("Signer: ", backgroundSignerk);
+    console.log("Signer: ", backgroundSigner);
     await fetch(process.env.DISTRIBUTION_API + "/sfuel", {
         headers: {
             "Content-Type": "application/json",
