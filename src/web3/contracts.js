@@ -16,6 +16,7 @@ import {
     backgroundSigner3,
     backgroundSigner4
 } from "./signer";
+import Queue from "../queue";
 import { Contract } from "ethers";
 import { getAccount } from "@wagmi/core";
 import { providers, utils, BigNumber } from "ethers";
@@ -29,6 +30,8 @@ let nonce = 0;
 let nonce2 = 0;
 let nonce3 = 0;
 let nonce4 = 0;
+
+let queue = new Queue();
 
 const provider = new providers.JsonRpcProvider(RPC_URL);
 
@@ -82,27 +85,45 @@ async function collectGold() {
 
     const { address } = getAccount();
     const _nonce = getGoldNonce(goldIter);
-    let _contract = goldIter % 2 === 0 ? gold : gold2;
+    // let _contract = goldIter % 2 === 0 ? gold : gold2;
+    let _signer = goldIter % 2 === 0 ? backgroundSigner : backgroundSigner2;
     goldIter++;
     await new Promise((resolve) => setTimeout(resolve, 0));
     
-    await _contract.publicMint(utils.isAddress(address) ? address : constants.AddressZero, {
+    // await _contract.publicMint(utils.isAddress(address) ? address : constants.AddressZero, {
+    //     nonce: _nonce
+    // });
+    queue.enqueue(await _signer.signTransaction({
+        to: gold.address,
+        data: gold.interface.encodeFunctionData(
+            "publicMint",
+            [utils.isAddress(address) ? address : constants.AddressZero]
+        ),
         nonce: _nonce
-    });
+    }));
 }
 
 async function destroyEnemy(tokenId) {
 
     const { address } = getAccount();
     const _nonce = getEnemyNonce(enemyIter);
-    let _contract = enemyIter % 2 === 0 ? enemies : enemies2;
+    let _signer = enemyIter % 2 === 0 ? backgroundSigner3 : backgroundSigner4;
     enemyIter++;
 
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    await _contract.destroy(BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero, {
+    queue.enqueue(await _signer.signTransaction({
+        to: enemies.address,
+        data: enemies.interface.encodeFunctionData(
+            "destroy",
+            [BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero]
+        ),
         nonce: _nonce
-    });
+    }))    
+
+    // await _contract.destroy(BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero, {
+    //     nonce: _nonce
+    // });
 }
 
 
@@ -115,6 +136,12 @@ async function updateBalances(game) {
     }, 1000);
 }
 
+(async() => {
+    while (!queue.isEmpty) {
+        await provider.sendTransaction(queue.dequeue());
+        await new Promise((resolve) => setTimeout(resolve, 0));
+    }
+})
 
 export {
     collectGold,
