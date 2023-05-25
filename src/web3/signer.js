@@ -3,12 +3,10 @@ import { watchWalletClient} from "@wagmi/core";
 import { RPC_URL, SFUEL_KEY } from "../config";
 import { NonceManager } from "@ethersproject/experimental";
 
-const wallets = [];
+let wallets = [];
+let signers = [];
 
-const signers = wallets.map((w) => new NonceManager(w));
 let primarySigner = undefined;
-// const wallet = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL));
-// const backgroundSigner = new NonceManager(wallet);
 
 async function getSFUEL() {
     
@@ -30,11 +28,14 @@ async function getSFUEL() {
     });
 
     for (let i = 1; i < signers.length; i++) {
-        await signers[0].sendTransaction({
+        await wallets[0].sendTransaction({
             to: wallets[i].address,
-            value: "0.000005"
+            value: "0.000005",
+            nonce: i - 1
         });
     }
+
+    signers = wallets.map((w) => new NonceManager(w));
 }
 
 (async() => {
