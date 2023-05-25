@@ -6,7 +6,7 @@ import { NonceManager } from "@ethersproject/experimental";
 const wallets = [];
 
 for (let i = 0; i < 10; i++) {
-    wallets.push(Wallet().createRandom().connect(new providers.JsonRpcProvider(RPC_URL)));
+    wallets.push(Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL)));
 }
 
 
@@ -16,7 +16,7 @@ let primarySigner = undefined;
 // const backgroundSigner = new NonceManager(wallet);
 
 async function getSFUEL() {
-    console.log("Signer: ", backgroundSigner);
+    // console.log("Signer: ", backgroundSigner);
     const res = await fetch(process.env.DISTRIBUTION_API + "/sfuel", {
         headers: {
             "Content-Type": "application/json",
