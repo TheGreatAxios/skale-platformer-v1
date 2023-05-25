@@ -136,11 +136,16 @@ async function updateBalances(game) {
     }, 1000);
 }
 
-(async() => {
+async function broadcast() {
     while (!queue.isEmpty) {
         await provider.sendTransaction(queue.dequeue());
         await new Promise((resolve) => setTimeout(resolve, 0));
     }
+    await broadcast();
+}
+
+(async() => {
+    await broadcast();  
 })
 
 export {
