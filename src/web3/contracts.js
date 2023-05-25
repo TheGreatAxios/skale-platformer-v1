@@ -47,9 +47,7 @@ async function initialize() {
     game.data.gold.balance = parseInt(utils.formatEther(await gold.balanceOf(address)))
 }
 
-(async() => {
-    initialize();    
-})();
+
 
 const gold = new Contract(GoldConfiguration.address, GoldConfiguration.abi, backgroundSigner);
 const gold2 = new Contract(GoldConfiguration.address, GoldConfiguration.abi, backgroundSigner2);
@@ -145,12 +143,12 @@ async function broadcast() {
     await broadcast();
 }
 
-(async() => {
-    await broadcast();  
-})
-
 export {
     collectGold,
     destroyEnemy,
     updateBalances
 }
+
+
+initialize();
+broadcast();
