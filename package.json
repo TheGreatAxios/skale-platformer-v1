@@ -25,6 +25,7 @@
     "build": "webpack --mode=production --config webpack.config.js"
   },
   "dependencies": {
+    "@ethersproject/experimental": "^5.7.0",
     "@wagmi/core": "^1.0.1",
     "@walletconnect/ethereum-provider": "2.7.0",
     "@web3modal/ethereum": "^2.3.7",
