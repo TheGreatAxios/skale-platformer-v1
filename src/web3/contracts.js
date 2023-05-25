@@ -153,7 +153,7 @@ async function broadcast() {
             await new Promise((resolve) => setTimeout(resolve, 0));
         }
     }
-    await broadcast();
+    return await broadcast();
 }
 
 export {
@@ -163,5 +163,7 @@ export {
 }
 
 
-initialize();
-broadcast();
+(async() => {
+    await initialize()
+    await broadcast();
+})
