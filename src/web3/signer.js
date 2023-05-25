@@ -1,9 +1,11 @@
 import { providers, Wallet } from "ethers";
 import { watchWalletClient} from "@wagmi/core";
 import { RPC_URL, SFUEL_KEY } from "../config";
+import { NonceManager } from "@ethersproject/experimental";
 
 let primarySigner = undefined;
-const backgroundSigner = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL));
+const wallet = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL));
+const backgroundSigner = new NonceManager(wallet);
 // const backgroundSigner2 = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL));
 // const backgroundSigner3 = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL));
 // const backgroundSigner4 = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL));
