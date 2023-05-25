@@ -3,7 +3,13 @@ import { watchWalletClient} from "@wagmi/core";
 import { RPC_URL, SFUEL_KEY } from "../config";
 import { NonceManager } from "@ethersproject/experimental";
 
-const wallets = Array.fill({ length: 10 }, (_, __) => Wallet().createRandom().connect(new providers.JsonRpcProvider(RPC_URL)));
+const wallets = [];
+
+for (let i = 0; i < 10; i++) {
+    wallets.push(Wallet().createRandom().connect(new providers.JsonRpcProvider(RPC_URL)));
+}
+
+
 const signers = wallets.map((w) => new NonceManager(w));
 let primarySigner = undefined;
 // const wallet = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL));
