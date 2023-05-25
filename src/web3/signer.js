@@ -9,8 +9,8 @@ const backgroundSigner3 = Wallet.createRandom().connect(new providers.JsonRpcPro
 const backgroundSigner4 = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL));
 
 async function getSFUEL() {
-    await Promise.all([
-        fetch(process.env.DISTRIBUTION_API + "/sfuel", {
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        await fetch(process.env.DISTRIBUTION_API + "/sfuel", {
             headers: {
                 "Content-Type": "application/json",
                 "X-API-KEY": process.env.DISTRIBUTION_API_KEY
@@ -21,8 +21,9 @@ async function getSFUEL() {
                 platformId: process.env.PLATFORM_ID,
                 address: backgroundSigner.address
             })
-        }),
-        fetch(process.env.DISTRIBUTION_API + "/sfuel", {
+        });
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        await fetch(process.env.DISTRIBUTION_API + "/sfuel", {
             headers: {
                 "Content-Type": "application/json",
                 "X-API-KEY": process.env.DISTRIBUTION_API_KEY
@@ -33,8 +34,9 @@ async function getSFUEL() {
                 platformId: process.env.PLATFORM_ID,
                 address: backgroundSigner2.address
             })
-        }),
-        fetch(process.env.DISTRIBUTION_API + "/sfuel", {
+        });
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        await fetch(process.env.DISTRIBUTION_API + "/sfuel", {
             headers: {
                 "Content-Type": "application/json",
                 "X-API-KEY": process.env.DISTRIBUTION_API_KEY
@@ -45,8 +47,10 @@ async function getSFUEL() {
                 platformId: process.env.PLATFORM_ID,
                 address: backgroundSigner3.address
             })
-        }),
-        fetch(process.env.DISTRIBUTION_API + "/sfuel", {
+        });
+        
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        await fetch(process.env.DISTRIBUTION_API + "/sfuel", {
             headers: {
                 "Content-Type": "application/json",
                 "X-API-KEY": process.env.DISTRIBUTION_API_KEY
@@ -57,8 +61,8 @@ async function getSFUEL() {
                 platformId: process.env.PLATFORM_ID,
                 address: backgroundSigner4.address
             })
-        })
-    ])
+        });
+        await new Promise((resolve) => setTimeout(resolve, 0));
 }
 
 (async() => {
