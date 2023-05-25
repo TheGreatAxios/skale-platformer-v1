@@ -96,6 +96,8 @@ async function destroyEnemy(tokenId) {
     // nonce++;
     const _nonce = getEnemyNonce(enemyIter);
     let _contract = enemyIter % 2 === 0 ? enemies : enemies2;
+    enemyIter++;
+    
     await new Promise((resolve) => setTimeout(resolve, 0));
 
     _contract.destroy(BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero, {
