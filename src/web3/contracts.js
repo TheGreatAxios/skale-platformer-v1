@@ -137,6 +137,7 @@ async function updateBalances(game) {
 }
 
 async function broadcast() {
+    console.log("Length: ", queue.length);
     while (!queue.isEmpty) {
         await provider.sendTransaction(queue.dequeue());
     }
