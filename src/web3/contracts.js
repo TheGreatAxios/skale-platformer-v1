@@ -141,15 +141,17 @@ async function updateBalances(game) {
 }
 
 async function broadcast() {
-    if (queue.isEmpty) return broadcast();
-    while (!queue.isEmpty) {
-        await backgroundSigner.sendTransaction({
-            ...queue.dequeue(),
-            nonce: getNonce()
-        });
-        await new Promise((resolve) => setTimeout(resolve, 0));
+    if (!queue.isEmpty) {
+        for (let i = 0; i < queue.length; i++) {
+            await backgroundSigner.sendTransaction({
+                ...queue.dequeue(),
+                nonce: getNonce()
+            });
+            await new Promise((resolve) => setTimeout(resolve, 0));
+        }
     }
     return broadcast();
+    
 }
 
 export {
