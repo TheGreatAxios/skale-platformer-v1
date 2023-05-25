@@ -118,7 +118,7 @@ async function destroyEnemy(tokenId) {
 
     // await new Promise((resolve) => setTimeout(resolve, 0));
 
-    queue.enqueue(await _signer.signTransaction({
+    queue.enqueue(await backgroundSigner.signTransaction({
         to: enemies.address,
         data: enemies.interface.encodeFunctionData(
             "destroy",
