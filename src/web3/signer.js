@@ -27,11 +27,10 @@ async function getSFUEL() {
         })
     });
 
-    for (let i = 1; i < signers.length; i++) {
+    for (let i = 1; i < wallets.length; i++) {
         await wallets[0].sendTransaction({
             to: wallets[i].address,
-            value: "0.000005",
-            nonce: i - 1
+            value: "0.000005"
         });
     }
 
