@@ -32,7 +32,7 @@ let nonce4 = 0;
 
 const provider = new providers.JsonRpcProvider(RPC_URL);
 
-(async() => {
+async function initialize() {
     [nonce, nonce2, nonce3, nonce4] = await Promise.all([
         provider.getTransactionCount(backgroundSigner.address),
         provider.getTransactionCount(backgroundSigner2.address),
@@ -42,6 +42,10 @@ const provider = new providers.JsonRpcProvider(RPC_URL);
 
     const { address } = getAccount();
     game.data.gold.balance = parseInt(utils.formatEther(await gold.balanceOf(address)))
+}
+
+(async() => {
+    initialize();    
 })();
 
 const gold = new Contract(GoldConfiguration.address, GoldConfiguration.abi, backgroundSigner);
@@ -77,14 +81,12 @@ function getEnemyNonce(iter) {
 async function collectGold() {
 
     const { address } = getAccount();
-    // const _nonce = nonce;
-    // nonce++;
     const _nonce = getGoldNonce(goldIter);
     let _contract = goldIter % 2 === 0 ? gold : gold2;
     goldIter++;
     await new Promise((resolve) => setTimeout(resolve, 0));
     
-    _contract.publicMint(utils.isAddress(address) ? address : constants.AddressZero, {
+    await _contract.publicMint(utils.isAddress(address) ? address : constants.AddressZero, {
         nonce: _nonce
     });
 }
@@ -92,18 +94,15 @@ async function collectGold() {
 async function destroyEnemy(tokenId) {
 
     const { address } = getAccount();
-    // const _nonce = nonce;
-    // nonce++;
     const _nonce = getEnemyNonce(enemyIter);
     let _contract = enemyIter % 2 === 0 ? enemies : enemies2;
     enemyIter++;
-    
+
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    _contract.destroy(BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero, {
+    await _contract.destroy(BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero, {
         nonce: _nonce
     });
-
 }
 
 
