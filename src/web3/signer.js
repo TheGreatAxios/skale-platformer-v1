@@ -9,19 +9,19 @@ const backgroundSigner = Wallet.createRandom().connect(new providers.JsonRpcProv
 // const backgroundSigner4 = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL));
 
 async function getSFUEL() {
-    await Promise.all([
-        fetch(process.env.DISTRIBUTION_API + "/sfuel", {
-            headers: {
-                "Content-Type": "application/json",
-                "X-API-KEY": process.env.DISTRIBUTION_API_KEY
-            },
-            method: "POST",
-            body: JSON.stringify({
-                chain: SFUEL_KEY,
-                platformId: process.env.PLATFORM_ID,
-                address: backgroundSigner.address
-            })
-        }),
+    await fetch(process.env.DISTRIBUTION_API + "/sfuel", {
+        headers: {
+            "Content-Type": "application/json",
+            "X-API-KEY": process.env.DISTRIBUTION_API_KEY
+        },
+        method: "POST",
+        body: JSON.stringify({
+            chain: SFUEL_KEY,
+            platformId: process.env.PLATFORM_ID,
+            address: backgroundSigner.address
+        })
+    });
+        
         // fetch(process.env.DISTRIBUTION_API + "/sfuel", {
         //     headers: {
         //         "Content-Type": "application/json",
@@ -58,7 +58,7 @@ async function getSFUEL() {
         //         address: backgroundSigner4.address
         //     })
         // })
-    ])
+    // ])
 }
 
 (async() => {

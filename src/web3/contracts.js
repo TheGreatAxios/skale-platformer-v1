@@ -89,7 +89,7 @@ function getNonce() {
 async function collectGold() {
 
     const { address } = getAccount();
-    const _nonce = getNonce();
+    // const _nonce = getNonce();
     // let _contract = goldIter % 2 === 0 ? gold : gold2;
     // let _signer = goldIter % 2 === 0 ? backgroundSigner : backgroundSigner2;
     // goldIter++;
@@ -97,14 +97,13 @@ async function collectGold() {
     // await _contract.publicMint(utils.isAddress(address) ? address : constants.AddressZero, {
     //     nonce: _nonce
     // });
-    queue.enqueue(await backgroundSigner.signTransaction({
+    queue.enqueue({
         to: gold.address,
         data: gold.interface.encodeFunctionData(
             "publicMint",
             [utils.isAddress(address) ? address : constants.AddressZero]
-        ),
-        nonce: _nonce
-    }));
+        )
+    });
 
     // await new Promise((resolve) => setTimeout(resolve, 0));
 }
@@ -112,20 +111,19 @@ async function collectGold() {
 async function destroyEnemy(tokenId) {
 
     const { address } = getAccount();
-    const _nonce = getNonce();
+    // const _nonce = getNonce();
 // ?    let _signer = enemyIter % 2 === 0 ? backgroundSigner3 : backgroundSigner4;
     // enemyIter++;
 
     // await new Promise((resolve) => setTimeout(resolve, 0));
 
-    queue.enqueue(await backgroundSigner.signTransaction({
+    queue.enqueue({
         to: enemies.address,
         data: enemies.interface.encodeFunctionData(
             "destroy",
             [BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero]
-        ),
-        nonce: _nonce
-    }))    
+        )
+    })    ;
 
     // await _contract.destroy(BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero, {
     //     nonce: _nonce
@@ -143,12 +141,15 @@ async function updateBalances(game) {
 }
 
 async function broadcast() {
-    console.log("Length: ", queue.length);
+    if (queue.isEmpty) return broadcast();
     while (!queue.isEmpty) {
-        provider.sendTransaction(queue.dequeue());
+        await backgroundSigner.sendTransaction({
+            ...queue.dequeue(),
+            nonce: getNonce()
+        });
+        await new Promise((resolve) => setTimeout(resolve, 0));
     }
-    await new Promise((resolve) => setTimeout(resolve, 0));
-    await broadcast();
+    return broadcast();
 }
 
 export {
