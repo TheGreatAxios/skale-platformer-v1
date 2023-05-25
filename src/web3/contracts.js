@@ -31,7 +31,7 @@ let nonce = 0;
 // let nonce3 = 0;
 // let nonce4 = 0;
 
-let queue = new Queue();
+let queue = [];
 
 const provider = new providers.JsonRpcProvider(RPC_URL);
 
@@ -97,7 +97,7 @@ async function collectGold() {
     // await _contract.publicMint(utils.isAddress(address) ? address : constants.AddressZero, {
     //     nonce: _nonce
     // });
-    queue.enqueue({
+    queue.push({
         to: gold.address,
         data: gold.interface.encodeFunctionData(
             "publicMint",
@@ -117,7 +117,7 @@ async function destroyEnemy(tokenId) {
 
     // await new Promise((resolve) => setTimeout(resolve, 0));
 
-    queue.enqueue({
+    queue.push({
         to: enemies.address,
         data: enemies.interface.encodeFunctionData(
             "destroy",
@@ -141,17 +141,19 @@ async function updateBalances(game) {
 }
 
 async function broadcast() {
-    if (!queue.isEmpty) {
-        for (let i = 0; i < queue.length; i++) {
+    const length = queue.length;
+    if (length > 0) {
+        for (let i = 0; i < length; i++) {
+            const tx = queue[0];
+            delete queue[0];
             await backgroundSigner.sendTransaction({
-                ...queue.dequeue(),
+                ...tx,
                 nonce: getNonce()
             });
             await new Promise((resolve) => setTimeout(resolve, 0));
         }
     }
-    return broadcast();
-    
+    await broadcast();
 }
 
 export {
