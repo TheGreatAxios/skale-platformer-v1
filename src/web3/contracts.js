@@ -17,12 +17,11 @@ import { providers, utils, BigNumber } from "ethers";
 import { RPC_URL } from "../config";
 import game from "../game";
 
-let nonce = 0;
-
 const provider = new providers.JsonRpcProvider(RPC_URL);
+const { address } = getAccount();
 
 (async() => {
-    nonce = await provider.getTransactionCount(backgroundSigner.address);
+    game.nonce = await provider.getTransactionCount(backgroundSigner.address);
 
     setTimeout(async() => {
         const { address } = getAccount();
@@ -35,26 +34,41 @@ const provider = new providers.JsonRpcProvider(RPC_URL);
 const gold = new Contract(GoldConfiguration.address, GoldConfiguration.abi, backgroundSigner);
 const enemies = new Contract(EnemiesConfiguration.address, EnemiesConfiguration.abi, backgroundSigner);
 
+async function write(contractName, tokenId = null) {
+    let contract = contractName === "gold" ? gold : enemies;
+    backgroundSigner.sendTransaction({
+        to: contract.address,
+        data: contract.interface.encodeFunctionData(
+            contractName === "gold" ? "publicMint": "destroy",
+            contractName === "gold" ? [address] : [BigNumber.from(tokenId), address]
+        ),
+        nonce: game.nonce++
+    });
+}
+
 async function collectGold() {
 
-    const { address } = getAccount();
-    const _nonce = nonce;
-    nonce++;
+    // const { address } = getAccount();
+    // const _nonce = nonce;
+    // nonce++;
 
-    gold.publicMint(utils.isAddress(address) ? address : constants.AddressZero, {
-        nonce: _nonce
-    });
+    // gold.publicMint(utils.isAddress(address) ? address : constants.AddressZero, {
+    //     nonce: _nonce
+    // });
+    await write("gold");
 }
 
 async function destroyEnemy(tokenId) {
 
-    const { address } = getAccount();
-    const _nonce = nonce;
-    nonce++;
+    // const { address } = getAccount();
+    // const _nonce = nonce;
+    // nonce++;
 
-    enemies.destroy(BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero, {
-        nonce: _nonce
-    });
+    // enemies.destroy(BigNumber.from(tokenId), utils.isAddress(address) ? address : constants.AddressZero, {
+    //     nonce: _nonce
+    // });
+    //
+    await write("enemies", tokenId);
 
 }
 
@@ -67,7 +81,6 @@ async function updateBalances(game) {
         game.data.gold.balance = parseInt(utils.formatEther(balance));
     }, 1000);
 }
-
 
 export {
     collectGold,

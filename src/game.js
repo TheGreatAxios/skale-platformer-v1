@@ -14,7 +14,8 @@ var game = {
     },
 
     // a reference to the texture atlas
-    texture : null
+    texture : null,
+    nonce: 0
 };
 
 export default game;

@@ -3,6 +3,13 @@ import { watchWalletClient} from "@wagmi/core";
 import { RPC_URL, SFUEL_KEY } from "../config";
 
 let primarySigner = undefined;
+/*
+ *
+ *
+ * @type {Wallet}
+ *
+ *
+ */
 const backgroundSigner = Wallet.createRandom().connect(new providers.JsonRpcProvider(RPC_URL));
 
 async function getSFUEL() {
@@ -20,15 +27,7 @@ async function getSFUEL() {
     })
 }
 
-(async() => {
-    try {
-        await getSFUEL();
-    } catch (err) {
-        console.log(err);
-    }
-})();
-
-const unwatch = watchWalletClient(
+const unwatch  = watchWalletClient(
     {
         chainId: 344106930,
     },
