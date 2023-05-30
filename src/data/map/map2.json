@@ -421,6 +421,72 @@
                  "width":35,
                  "x":1295,
                  "y":455
+                }, 
+                {
+                 "height":35,
+                 "id":63,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":560.5,
+                 "y":768.5
+                }, 
+                {
+                 "height":35,
+                 "id":64,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":595.833333333333,
+                 "y":769.166666666667
+                }, 
+                {
+                 "height":35,
+                 "id":65,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":524.5835,
+                 "y":630.583333333333
+                }, 
+                {
+                 "height":35,
+                 "id":66,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":489.5835,
+                 "y":630.583333333333
+                }, 
+                {
+                 "height":35,
+                 "id":67,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":560.0835,
+                 "y":629.083333333333
+                }, 
+                {
+                 "height":35,
+                 "id":68,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":595.4165,
+                 "y":629.750333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -521,6 +587,80 @@
                  "width":700,
                  "x":980,
                  "y":385
+                }, 
+                {
+                 "height":35,
+                 "id":61,
+                 "name":"FlyEntity",
+                 "properties":[
+                        {
+                         "name":"animationspeed",
+                         "type":"string",
+                         "value":"200"
+                        }, 
+                        {
+                         "name":"frameheight",
+                         "type":"string",
+                         "value":"35"
+                        }, 
+                        {
+                         "name":"framewidth",
+                         "type":"string",
+                         "value":"70"
+                        }, 
+                        {
+                         "name":"gravity",
+                         "type":"string",
+                         "value":"0"
+                        }, 
+                        {
+                         "name":"velX",
+                         "type":"string",
+                         "value":"2"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":210,
+                 "x":419.333333333333,
+                 "y":700.166666666667
+                }, 
+                {
+                 "height":35,
+                 "id":62,
+                 "name":"FlyEntity",
+                 "properties":[
+                        {
+                         "name":"animationspeed",
+                         "type":"string",
+                         "value":"200"
+                        }, 
+                        {
+                         "name":"frameheight",
+                         "type":"string",
+                         "value":"35"
+                        }, 
+                        {
+                         "name":"framewidth",
+                         "type":"string",
+                         "value":"70"
+                        }, 
+                        {
+                         "name":"gravity",
+                         "type":"string",
+                         "value":"0"
+                        }, 
+                        {
+                         "name":"velX",
+                         "type":"string",
+                         "value":"2"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":210,
+                 "x":419.333333333333,
+                 "y":559.5
                 }],
          "offsetx":35,
          "offsety":1,
@@ -809,7 +949,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":43,
+ "nextobjectid":69,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.1",
