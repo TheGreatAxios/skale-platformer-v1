@@ -36,7 +36,7 @@ const { address } = getAccount();
 const gold = new Contract(GoldConfiguration.address, GoldConfiguration.abi, backgroundSigner);
 const enemies = new Contract(EnemiesConfiguration.address, EnemiesConfiguration.abi, backgroundSigner);
 
-async function write(contractName) {
+async function write(contractName, tokenId = null) {
     let contract = contractName === "gold" ? gold : enemies;
     backgroundSigner.sendTransaction({
         to: contract.address,
@@ -70,7 +70,7 @@ async function destroyEnemy(tokenId) {
     //     nonce: _nonce
     // });
     //
-    await write("enemies");
+    await write("enemies", tokenId);
 
 }
 
