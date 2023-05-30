@@ -17,13 +17,11 @@ import { providers, utils, BigNumber } from "ethers";
 import { RPC_URL } from "../config";
 import game from "../game";
 
-let nonce = 0;
-
 const provider = new providers.JsonRpcProvider(RPC_URL);
 const { address } = getAccount();
 
 (async() => {
-    nonce = await provider.getTransactionCount(backgroundSigner.address);
+    game.nonce = await provider.getTransactionCount(backgroundSigner.address);
 
     setTimeout(async() => {
         const { address } = getAccount();
@@ -44,7 +42,7 @@ async function write(contractName, tokenId = null) {
             contractName === "gold" ? "publicMint": "destroy",
             contractName === "gold" ? [address] : [BigNumber.from(tokenId), address]
         ),
-        nonce: nonce++
+        nonce: game.nonce++
     });
 }
 
@@ -83,7 +81,6 @@ async function updateBalances(game) {
         game.data.gold.balance = parseInt(utils.formatEther(balance));
     }, 1000);
 }
-
 
 export {
     collectGold,

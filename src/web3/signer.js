@@ -27,7 +27,7 @@ async function getSFUEL() {
     })
 }
 
-const unwatch = watchWalletClient(
+const unwatch  = watchWalletClient(
     {
         chainId: 344106930,
     },

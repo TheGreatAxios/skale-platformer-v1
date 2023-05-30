@@ -163,7 +163,7 @@ class ScoreItem extends me.BitmapText {
     update( dt ) {
         if (this.score !== game.data.gold.balance) {
             this.score = game.data.gold.balance;
-            this.setText("Gold " + this.score);
+            this.setText("Gold " + this.score + " | Txs " + game.nonce);
             this.isDirty = true;
         }
         return super.update(dt);
