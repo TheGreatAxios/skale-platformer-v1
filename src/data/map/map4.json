@@ -27,7 +27,7 @@
                  "value":"repeat-x"
                 }],
          "type":"imagelayer",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":538
         }, 
@@ -50,7 +50,7 @@
                  "value":"repeat-x"
                 }],
          "type":"imagelayer",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":128
         }, 
@@ -167,7 +167,7 @@
                 }, 
                 {
                  "height":35,
-                 "id":867,
+                 "id":885,
                  "name":"SlimeEntity",
                  "properties":[
                         {
@@ -184,12 +184,100 @@
                  "type":"",
                  "visible":true,
                  "width":142,
-                 "x":490,
-                 "y":628.5
+                 "x":492.636363636364,
+                 "y":627.954545454545
+                }, 
+                {
+                 "height":35,
+                 "id":886,
+                 "name":"SlimeEntity",
+                 "properties":[
+                        {
+                         "name":"frameheight",
+                         "type":"string",
+                         "value":"35"
+                        }, 
+                        {
+                         "name":"framewidth",
+                         "type":"string",
+                         "value":"55"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":142,
+                 "x":698.69696969697,
+                 "y":452.19696969697
+                }, 
+                {
+                 "height":35,
+                 "id":887,
+                 "name":"SlimeEntity",
+                 "properties":[
+                        {
+                         "name":"frameheight",
+                         "type":"string",
+                         "value":"35"
+                        }, 
+                        {
+                         "name":"framewidth",
+                         "type":"string",
+                         "value":"55"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":142,
+                 "x":495.666666666667,
+                 "y":273.409090909091
+                }, 
+                {
+                 "height":35,
+                 "id":888,
+                 "name":"SlimeEntity",
+                 "properties":[
+                        {
+                         "name":"frameheight",
+                         "type":"string",
+                         "value":"35"
+                        }, 
+                        {
+                         "name":"framewidth",
+                         "type":"string",
+                         "value":"55"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":142,
+                 "x":698.69696969697,
+                 "y":94.6212121212122
+                }, 
+                {
+                 "height":35,
+                 "id":889,
+                 "name":"SlimeEntity",
+                 "properties":[
+                        {
+                         "name":"frameheight",
+                         "type":"string",
+                         "value":"35"
+                        }, 
+                        {
+                         "name":"framewidth",
+                         "type":"string",
+                         "value":"55"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":142,
+                 "x":910.818181818182,
+                 "y":197.651515151515
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -198,7 +286,216 @@
          "draworder":"topdown",
          "id":6,
          "name":"coins",
-         "objects":[],
+         "objects":[
+                {
+                 "height":35,
+                 "id":893,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1324.92424242424,
+                 "y":443.106060606061
+                }, 
+                {
+                 "height":35,
+                 "id":894,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1140.07575757576,
+                 "y":321.893939393939
+                }, 
+                {
+                 "height":35,
+                 "id":895,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1564.31818181818,
+                 "y":549.166666666667
+                }, 
+                {
+                 "height":35,
+                 "id":896,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1724.92424242424,
+                 "y":446.136363636364
+                }, 
+                {
+                 "height":35,
+                 "id":897,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1843.10606060606,
+                 "y":330.984848484848
+                }, 
+                {
+                 "height":35,
+                 "id":898,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1621.89393939394,
+                 "y":143.106060606061
+                }, 
+                {
+                 "height":35,
+                 "id":899,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1455.22727272727,
+                 "y":67.3484848484848
+                }, 
+                {
+                 "height":35,
+                 "id":900,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1285.5303030303,
+                 "y":52.1969696969697
+                }, 
+                {
+                 "height":35,
+                 "id":901,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1870.37878787879,
+                 "y":515.833333333333
+                }, 
+                {
+                 "height":35,
+                 "id":902,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1867.34848484848,
+                 "y":518.863636363636
+                }, 
+                {
+                 "height":35,
+                 "id":903,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1867.34848484848,
+                 "y":518.863636363636
+                }, 
+                {
+                 "height":35,
+                 "id":904,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1867.34848484848,
+                 "y":518.863636363636
+                }, 
+                {
+                 "height":35,
+                 "id":905,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1870.37878787879,
+                 "y":518.863636363636
+                }, 
+                {
+                 "height":35,
+                 "id":906,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1876.43939393939,
+                 "y":518.863636363636
+                }, 
+                {
+                 "height":35,
+                 "id":907,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1876.43939393939,
+                 "y":518.863636363636
+                }, 
+                {
+                 "height":35,
+                 "id":908,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1876.43939393939,
+                 "y":518.863636363636
+                }, 
+                {
+                 "height":35,
+                 "id":909,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1876.43939393939,
+                 "y":518.863636363636
+                }, 
+                {
+                 "height":35,
+                 "id":910,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1876.43939393939,
+                 "y":518.863636363636
+                }, 
+                {
+                 "height":35,
+                 "id":911,
+                 "name":"CoinEntity",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":1876.43939393939,
+                 "y":518.863636363636
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -244,7 +541,7 @@
          "offsety":1,
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -477,273 +774,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":473.485333333333,
-                 "x":11.7421818181818,
+                 "width":18.9398787878787,
+                 "x":466.287636363636,
                  "y":1.06060606060612
-                }, 
-                {
-                 "height":35,
-                 "id":868,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":142,
-                 "x":699,
-                 "y":456.5
-                }, 
-                {
-                 "height":35,
-                 "id":869,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":142,
-                 "x":493,
-                 "y":278.5
-                }, 
-                {
-                 "height":35,
-                 "id":870,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":142,
-                 "x":697,
-                 "y":94.5
-                }, 
-                {
-                 "height":35,
-                 "id":871,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":142,
-                 "x":907,
-                 "y":200.5
-                }, 
-                {
-                 "height":35,
-                 "id":872,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":142,
-                 "x":1085,
-                 "y":344.5
-                }, 
-                {
-                 "height":35,
-                 "id":873,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":142,
-                 "x":1259,
-                 "y":454.5
-                }, 
-                {
-                 "height":35,
-                 "id":874,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":142,
-                 "x":1499,
-                 "y":556.5
-                }, 
-                {
-                 "height":35,
-                 "id":875,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":142,
-                 "x":1781,
-                 "y":348.5
-                }, 
-                {
-                 "height":35,
-                 "id":876,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":60,
-                 "x":1715,
-                 "y":450.5
-                }, 
-                {
-                 "height":35,
-                 "id":877,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":142,
-                 "x":1577,
-                 "y":168.5
-                }, 
-                {
-                 "height":35,
-                 "id":878,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":142,
-                 "x":1397,
-                 "y":96.5
-                }, 
-                {
-                 "height":35,
-                 "id":879,
-                 "name":"SlimeEntity",
-                 "properties":[
-                        {
-                         "name":"frameheight",
-                         "type":"string",
-                         "value":"35"
-                        }, 
-                        {
-                         "name":"framewidth",
-                         "type":"string",
-                         "value":"55"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":74,
-                 "x":1256,
-                 "y":53.5
                 }, 
                 {
                  "height":730,
@@ -779,7 +812,7 @@
                  "y":672
                 }, 
                 {
-                 "height":480,
+                 "height":173.939393939394,
                  "id":884,
                  "name":"",
                  "rotation":0,
@@ -787,7 +820,18 @@
                  "visible":true,
                  "width":107.485,
                  "x":1091.2575,
-                 "y":-302
+                 "y":4.06060606060606
+                }, 
+                {
+                 "height":35.544118922552,
+                 "id":912,
+                 "name":"",
+                 "rotation":359.616308965139,
+                 "type":"",
+                 "visible":true,
+                 "width":391.280305673425,
+                 "x":72.0792666344397,
+                 "y":706.270104415399
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -796,7 +840,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":885,
+ "nextobjectid":913,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.1",
