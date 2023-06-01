@@ -36,7 +36,7 @@ const enemies = new Contract(EnemiesConfiguration.address, EnemiesConfiguration.
 
 async function write(contractName, tokenId = null) {
     let contract = contractName === "gold" ? gold : enemies;
-    backgroundSigner.sendTransaction({
+    await backgroundSigner.sendTransaction({
         to: contract.address,
         data: contract.interface.encodeFunctionData(
             contractName === "gold" ? "publicMint": "destroy",
