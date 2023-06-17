@@ -1,6 +1,6 @@
 import * as me from 'melonjs';
-import game from '../game';
 import { destroyEnemy } from '../actions';
+import game from '../game';
 
 class PathEnemyEntity extends me.Entity{
 

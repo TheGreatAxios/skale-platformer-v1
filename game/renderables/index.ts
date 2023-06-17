@@ -1,4 +1,6 @@
 import CoinEntity from "./coin";
 import PlayerEntity from "./player";
-export { CoinEntity, PlayerEntity };
+import CompleteLevel from "./completeLevel";
+
+export { CoinEntity, CompleteLevel, PlayerEntity };
 export { FlyEnemyEntity, SlimeEnemyEntity } from "./enemies";

@@ -1,25 +1,28 @@
 import * as me from 'melonjs';
-import game from '../game';
 
 class LevelOne extends me.Stage {
-   /**
+
+    public readonly levelName: string = "map1";
+    /**
      *  action to perform on state change
      */
    onResetEvent() {
     // load a level
-      me.level.load("map1");
-      console.log(me.level.getCurrentLevel());
-      // play some music
+    console.log("LOADG AME");
+      me.level.load(this.levelName);
       me.audio.playTrack("dst-gameforest");
+
+      super.onResetEvent();
   }
 
   /**
    *  action to perform on state change
    */
   onDestroyEvent() {
-    console.log("DESTROY");
       // stop some music
       me.audio.stopTrack();
+
+      super.onDestroyEvent();
   }
 };
 

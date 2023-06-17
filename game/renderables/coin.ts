@@ -18,7 +18,7 @@ class CoinEntity extends me.Collectable {
     }
 
     // add a onResetEvent to enable object recycling
-    onResetEvent(x: number, y: number, settings: any) {
+    onResetEvent(x: number, y: number, _: any) {
         this.shift(x + 2.5, y + 2.5);
         // only check for collision against player
         this.body.setCollisionMask(me.collision.types.PLAYER_OBJECT);

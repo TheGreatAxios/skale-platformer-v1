@@ -6,6 +6,7 @@ import { Signal } from "@preact/signals-react";
 import { TextureAtlas } from "melonjs";
 
 type Game = {
+    currentLevel: number | undefined,
     data: {
         gold: {
             balance: number | bigint
@@ -15,6 +16,7 @@ type Game = {
     texture: TextureAtlas
     ,
     nonce: number | bigint
+
 }
 
 const _baseGame = {
@@ -22,6 +24,7 @@ const _baseGame = {
     /**
      * object where to store game global scole
      */
+    currentLevel: undefined,
     data : {
         gold: {
             balance : 0,

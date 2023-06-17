@@ -1,25 +1,26 @@
 import {
-    TextureAtlas,
     audio,
     device,
     input,
     loader,
     pool,
     state,
-    utils,
     video,
-    event
+    event,
+    TextureAtlas
 } from "melonjs";
 import resources from "./resources";
+import { CoinEntity, CompleteLevel, FlyEnemyEntity, PlayerEntity, SlimeEnemyEntity } from "./renderables";
+import { Levels, GameOver, LevelComplete } from "./levels";
+
 import game from "./game";
-import { CoinEntity, FlyEnemyEntity, PlayerEntity, SlimeEnemyEntity } from "./renderables";
-import { Levels } from "./levels";
 
 export default function initialize(levelIndex: number) {
+
     if (
         !video.init(800, 600, {
             parent: "screen",
-            scaleMethod: "flex-width",
+            scaleMethod: "flex",
             renderer: video.AUTO,
             preferWebGL1: false,
             subPixel: false,
@@ -28,6 +29,7 @@ export default function initialize(levelIndex: number) {
         alert("Your browser does not support HTML5 canvas.");
         return;
     }
+    
 
     // initialize the "sound engine"
     audio.init("mp3,ogg");
@@ -37,6 +39,9 @@ export default function initialize(levelIndex: number) {
         // set the "Play/Ingame" Screen Object
         const Level = Levels[levelIndex];
         state.set(state.PLAY, new Level());
+        state.set(state.GAMEOVER, new GameOver());
+        state.set(state.GAME_END, new LevelComplete());
+        
         // set the fade transition effect
         state.transition("fade", "#FFFFFF", 250);
 
@@ -45,6 +50,7 @@ export default function initialize(levelIndex: number) {
         pool.register("SlimeEntity", SlimeEnemyEntity);
         pool.register("FlyEntity", FlyEnemyEntity);
         pool.register("CoinEntity", CoinEntity, true);
+        pool.register("me.Trigger", CompleteLevel);
 
         // load the texture atlas file
         // this will be used by renderable object later
@@ -52,6 +58,8 @@ export default function initialize(levelIndex: number) {
             loader.getJSON("texture"),
             loader.getImage("texture")
         );
+
+        // game.
 
         // add some keyboard shortcuts
         event.on(event.KEYDOWN, (_: input.KEY, keyCode: number /*, edge */) => {
@@ -74,10 +82,6 @@ export default function initialize(levelIndex: number) {
             }
         });
 
-        // switch to PLAY state
-        // setTimeout(() => {
         state.change(state.PLAY, true);
-        // }, 2500);
-
     });
 }
