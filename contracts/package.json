@@ -1,0 +1,34 @@
+{
+  "name": "skale-platformer-smart-contracts",
+  "description": "Core Smart Contracts for the SKALE Platformer",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "@nomiclabs/hardhat-ethers": "^2.0.0",
+    "@nomiclabs/hardhat-etherscan": "^3.1.0",
+    "@openzeppelin/contracts": "^4.8.3",
+    "@typechain/ethers-v5": "^10.2.0",
+    "@typechain/hardhat": "^6.1.5",
+    "@types/chai": "^4.3.3",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.6",
+    "hardhat": "^2.11.2",
+    "hardhat-contract-sizer": "^2.8.0",
+    "hardhat-deploy": "^0.11.8",
+    "hardhat-deploy-ethers": "^0.3.0-beta.13",
+    "hardhat-gas-reporter": "^1.0.8",
+    "hardhat-packager": "^1.4.2",
+    "mocha": "^10.0.0",
+    "solidity-coverage": "^0.8.1",
+    "ts-node": "^10.9.1",
+    "typechain": "^8.1.1",
+    "typescript": "^5.0.4"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@primitivefi/hardhat-dodoc": "^0.2.3",
+    "dotenv": "^16.0.3",
+    "ethcall": "^5.0.1"
+  }
+}

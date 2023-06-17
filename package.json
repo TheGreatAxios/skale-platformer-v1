@@ -1,0 +1,31 @@
+{
+  "name": "skale-platform-web3",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.19",
+    "@mui/icons-material": "^5.11.16",
+    "@preact/signals-react": "^1.3.2",
+    "@rainbow-me/rainbowkit": "^1.0.2",
+    "@skaleproject/pow-ethers": "^0.3.2",
+    "melonjs": "^15.3.0",
+    "next": "^13.4.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "viem": "~1.0.6",
+    "wagmi": "~1.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.12",
+    "@types/react": "^18.2.6",
+    "eslint": "^8.15.0",
+    "eslint-config-next": "^13.4.3",
+    "typescript": "^5.0.4"
+  }
+}

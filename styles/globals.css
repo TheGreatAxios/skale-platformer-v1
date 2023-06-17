@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@100&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-black: #010101;
+    --color-white: #fffaff;
+    --color-selected: #d0cfcf;
+    --color-grey: #c0c0c093;
+    --color-red: #ff3a20;
+    --color-green: #23ce6b;
+    --color-primary: #5465FF;
+    --color-secondary: #07004d;
+
+    --color-charcoal: #131112;
+    --color-page-background: #eff2f1;
+
+    --color-table-header: var(--color-form-background);
+    --color-on-table-header: var(--color-white);
+
+    --color-table-background: var(--color-white);
+    --color-on-table-background: var(--color-black);
+
+    --select-border: #777;
+    --select-focus: var(--color-primary);
+    --select-arrow: var(--select-border);
+
+    --border-radius: 0.25em;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: none;
+    scrollbar-color: #5465ff #131112;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #131112;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #5465ff;
+    border-radius: 0px;
+    border: 0px solid #ffffff;
+}
+
+h1,
+h2 {
+    font-family: "Poppins", serif;
+    color: var(--color-white);
+}
+
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+li,
+input,
+select,
+label {
+    font-family: "Lato", sans-serif;
+    color: var(--color-white);
+}
